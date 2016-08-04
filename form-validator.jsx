@@ -3,6 +3,7 @@ FormValidatorMixin = {
     var form_is_valid = true;
 
     for(var key in this.validations) {
+      var key_valid = true;
       for(var validation in this.validations[key]) {
         var is_valid = true;
 
@@ -33,10 +34,16 @@ FormValidatorMixin = {
               $(this.refs[key]).append('<span class="rfv-error-msg">'+this.validations[key]['messages'][validation]+'</span>');
             }
           }
+
+          key_valid = false;
         }else{
           //$(this.refs[key]).removeClass('rfv-has-error');
           //$(this.refs[key]).find('span.rfv-error-msg').remove();
         }
+      }
+
+      if(key_valid) {
+        $(this.refs[key]).removeClass('rfv-has-error');
       }
     }
 

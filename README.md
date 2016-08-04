@@ -3,7 +3,7 @@ Form Validator Mixin for React
 
 To use it must to add the **FormValidatorMixin** to the array of mixins of the component and an object **validations** who describe what validations must to be done. The keys of the object are **refs** to the values in the DOM
 
-This allow to have a function into the component called **validate()** that return true or false regarding the validations performed. So for perform the validations must to call the function **this.validate()**
+This allow to have a function into the component called **validate()** that return true or false regarding the validations performed. So, to perform the validations must to call the function **this.validate()**
 
 ### Example
 ```javascript

@@ -29,10 +29,6 @@ FormValidatorMixin = {
           $(this.refs[key]).addClass('rfv-has-error');
         }
       }
-
-      if(!form_is_valid) {
-        break;
-      }
     }
 
     return form_is_valid;

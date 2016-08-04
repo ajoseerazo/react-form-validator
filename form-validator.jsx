@@ -27,7 +27,6 @@ FormValidatorMixin = {
           form_is_valid = false;
 
           $(this.refs[key]).addClass('rfv-has-error');
-          break;
         }
       }
 

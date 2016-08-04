@@ -25,6 +25,8 @@ FormValidatorMixin = {
         if(!is_valid) {
           this.errorMessage = this.validations[key]['messages'][validation];
           form_is_valid = false;
+
+          $(this.refs[key]).addClass('rfv-has-error');
           break;
         }
       }

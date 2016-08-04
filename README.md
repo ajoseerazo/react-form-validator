@@ -33,4 +33,4 @@ LoginForm = React.createClass({
   });
 ```
 
-In the example we have validations for two inputs (email, password). Each key in the object **validations** make reference to two inputs who references are **email** and **password**. Each validation performed have a message associated to it and must to be defined in the key **messages** with its respective validation type. For example for **email** we have two kinds of validations, required and is_email, and in the object **mesasages** we define the messages that must to be displayed for each one in case of validation fails.
+In the example we have validations for two inputs (email, password). Each key in the object **validations** make reference to two inputs who references are **email** and **password**. Each validation performed have a message associated to it and must to be defined in the key **messages** with its respective validation type. For example for **email** we have two kinds of validations, **required** and **is_email**, and in the object **messages** we define the messages that must to be displayed for each one in case of validation fails.

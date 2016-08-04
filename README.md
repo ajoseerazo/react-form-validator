@@ -6,6 +6,9 @@ To use it must to add the **FormValidatorMixin** to the array of mixins of the c
 ### Example
 ```javascript
 LoginForm = React.createClass({
+
+    ...
+    
     mixins: [FormValidatorMixin],
   
     validations: {
@@ -24,6 +27,9 @@ LoginForm = React.createClass({
         }
       }
     },
+    
+    ...
+    
   });
 ```
 

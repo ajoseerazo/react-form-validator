@@ -34,8 +34,8 @@ FormValidatorMixin = {
             }
           }
         }else{
-          $(this.refs[key]).removeClass('rfv-has-error');
-          $(this.refs[key]).find('span.rfv-error-msg').remove();
+          //$(this.refs[key]).removeClass('rfv-has-error');
+          //$(this.refs[key]).find('span.rfv-error-msg').remove();
         }
       }
     }

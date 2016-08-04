@@ -3,7 +3,7 @@ Form Validator Mixin for React
 
 To use it must to add the **FormValidatorMixin** to the array of mixins of the component and an object **validations** who describe what validations must to be done. The keys of the object are **refs** to the values in the DOM
 
-Example
+### Example
 ```javascript
 LoginForm = React.createClass({
     mixins: [FormValidatorMixin],

@@ -27,6 +27,15 @@ FormValidatorMixin = {
           form_is_valid = false;
 
           $(this.refs[key]).addClass('rfv-has-error');
+
+          if(this.formValidatorConfig) {
+            if(this.formValidatorConfig.showErrorMessages) {
+              $(this.refs[key]).append('<span class="rfv-error-msg">'+this.validations[key]['messages'][validation]+'</span>');
+            }
+          }
+        }else{
+          $(this.refs[key]).removeClass('rfv-has-error');
+          $(this.refs[key]).find('span.rfv-error-msg').remove();
         }
       }
     }

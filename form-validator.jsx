@@ -10,16 +10,29 @@ FormValidatorMixin = {
         switch(validation) {
           case 'required':
             if (this.validations[key][validation]) {
-              is_valid = this._validateRequired(key);
+              is_valid = this._validateRequired(this.refs[key].value);
             }
             break;
           case 'is_email':
             if (this.validations[key][validation]) {
-              is_valid = this._validateEmail(key);
+              is_valid = this._validateEmail(this.refs[key].value);
             }
             break;
           case 'equal_to':
-            is_valid = this._validateEqualTo(key, this.validations[key][validation]);
+            is_valid = this._validateEqualTo(this.refs[key].value, this.refs[this.validations[key][validation]].value);
+            break;
+          case 'func':
+            is_valid = this.refs[key][this.validations[key][validation]].call(this);
+
+            if(!is_valid) {
+              if(this.refs[key][this.validations[key]['onError']]) {
+                this.refs[key][this.validations[key]['onError']].call(this);
+              }
+            }else{
+              if(this.refs[key][this.validations[key]['onNoError']]) {
+                this.refs[key][this.validations[key]['onNoError']].call(this);
+              }
+            }
             break;
         }
 
@@ -50,20 +63,20 @@ FormValidatorMixin = {
     return form_is_valid;
   },
 
-  _validateRequired: function(key) {
-    if(this.refs[key].value.trim() === "") {
+  _validateRequired: function(value) {
+    if(value.trim() === "") {
       return false;
     }
     return true;
   },
 
-  _validateEmail: function(key) {
+  _validateEmail: function(value) {
     var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return this._testRegex(email_regex, this.refs[key].value);
+    return this._testRegex(email_regex, value);
   },
 
-  _validateEqualTo: function(key, target) {
-    if(this.refs[key].value === this.refs[target].value) {
+  _validateEqualTo: function(value, target) {
+    if(value === target) {
       return true;
     }
     return false;

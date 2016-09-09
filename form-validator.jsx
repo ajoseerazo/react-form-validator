@@ -21,6 +21,9 @@ FormValidatorMixin = {
           case 'equal_to':
             is_valid = this._validateEqualTo(this.refs[key].value, this.refs[this.validations[key][validation]].value);
             break;
+          case 'is_url':
+            is_valid = this._validateURL(this.refs[key].value);
+            break;
           case 'func':
             is_valid = this.refs[key][this.validations[key][validation]].call(this);
 
@@ -61,6 +64,11 @@ FormValidatorMixin = {
     }
 
     return form_is_valid;
+  },
+
+  _validateURL: function(value) {
+    var url_regex = /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/;
+    return this._testRegex(url_regex, value);
   },
 
   _validateRequired: function(value) {
